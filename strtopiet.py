@@ -56,19 +56,14 @@ def main():
         colorX = (colorX + dX) % 6
         colorY = (colorY + dY) % 3
         X = X + 1
+
     # stop program
-    program.im.putpixel((len(commands)+3, 0), hex_to_rgb(black))
-    program.im.putpixel((len(commands)+3, 1), hex_to_rgb(black))
-    program.im.putpixel((len(commands)+3, 3), hex_to_rgb(black))
-    program.im.putpixel((len(commands)+2, 3), hex_to_rgb(black))
-    program.im.putpixel((len(commands)+1, 3), hex_to_rgb(black))
-    program.im.putpixel((len(commands)  , 3), hex_to_rgb(black))
-    program.im.putpixel((len(commands)  , 2), hex_to_rgb(black))
-    program.im.putpixel((len(commands)  , 1), hex_to_rgb(black))
-    program.im.putpixel((len(commands)+1, 1), hex_to_rgb(black))
-    program.im.putpixel((len(commands)+1, 2), hex_to_rgb(colors[0][0]))
-    program.im.putpixel((len(commands)+2, 2), hex_to_rgb(colors[0][0]))
-    program.im.putpixel((len(commands)+3, 2), hex_to_rgb(colors[0][0]))
+    l = len(commands)
+    b = hex_to_rgb(black)
+    s = hex_to_rgb(colors[0][0])
+    [program.im.putpixel(p, c) for (p, c) in [((l+3, 0), b), ((l+3, 1), b), ((l+3, 3), b), ((l+2, 3), b),
+        ((l+1, 3), b), ((l, 3), b), ((l, 2), b), ((l, 1), b), ((l+1, 1), b), 
+        ((l+1, 2), s), ((l+2, 2), s), ((l+3, 2), s)]]
 
     program.save(args['<pngname>'])
     sys.exit(1)
