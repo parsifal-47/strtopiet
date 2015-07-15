@@ -61,9 +61,8 @@ def main():
     l = len(commands)
     b = hex_to_rgb(black)
     s = hex_to_rgb(colors[0][0])
-    [program.im.putpixel(p, c) for (p, c) in [((l+3, 0), b), ((l+3, 1), b), ((l+3, 3), b), ((l+2, 3), b),
-        ((l+1, 3), b), ((l, 3), b), ((l, 2), b), ((l, 1), b), ((l+1, 1), b), 
-        ((l+1, 2), s), ((l+2, 2), s), ((l+3, 2), s)]]
+    [program.im.putpixel((l + x, y), c) for (x, y, c) in [(3, 0, b), (3, 1, b), (3, 3, b), (2, 3, b),
+        (1, 3, b), (0, 3, b), (0, 2, b), (0, 1, b), (1, 1, b), (1, 2, s), (2, 2, s), (3, 2, s)]]
 
     program.save(args['<pngname>'])
     sys.exit(1)
